@@ -1,0 +1,636 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api to update and create relations for items and more functions",
+        "version": "0.1"
+    },
+    "paths": {
+        "/create-dependencia": {
+            "post": {
+                "tags": [
+                    "Relacional - Itens"
+                ],
+                "summary": "Create dependent item",
+                "operationId": "7fe2af4fd486287488300e148da6b08e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "empresa": {
+                                        "description": "Company id",
+                                        "type": "integer"
+                                    },
+                                    "revenda": {
+                                        "description": "Reseller id",
+                                        "type": "integer"
+                                    },
+                                    "item_estoque_principal": {
+                                        "description": "Main item id",
+                                        "type": "integer"
+                                    },
+                                    "item_estoque_secundario": {
+                                        "description": "Secondary item id",
+                                        "type": "integer"
+                                    },
+                                    "relacao": {
+                                        "description": "Relation type",
+                                        "type": "string"
+                                    },
+                                    "dependencia_multipla": {
+                                        "description": "Multiple dependency",
+                                        "type": "string"
+                                    },
+                                    "client": {
+                                        "description": "Client id",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/get-especificacaobycliente": {
+            "post": {
+                "tags": [
+                    "Relacional - Itens"
+                ],
+                "summary": "Get item specification by client and item",
+                "operationId": "4ef2a5d420cb9f51c2342f038ca211b7",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "client": {
+                                        "description": "Client id",
+                                        "type": "integer"
+                                    },
+                                    "item_estoque": {
+                                        "description": "Item id",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/create-especificacao": {
+            "post": {
+                "tags": [
+                    "Relacional - Itens"
+                ],
+                "summary": "Create item specification",
+                "operationId": "f1d32e5af26f95daab74a6dad45e1ffa",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "empresa": {
+                                        "description": "Company",
+                                        "type": "string"
+                                    },
+                                    "revenda": {
+                                        "description": "Reseller",
+                                        "type": "string"
+                                    },
+                                    "client": {
+                                        "description": "Client id",
+                                        "type": "integer"
+                                    },
+                                    "item_estoque": {
+                                        "description": "Item id",
+                                        "type": "integer"
+                                    },
+                                    "item_especificacao": {
+                                        "description": "Item specification",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/createrelacao": {
+            "post": {
+                "summary": "Create item relationship",
+                "operationId": "4a1f0ba0486f6474f4291a562de79557",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "empresa": {
+                                        "description": "Company id",
+                                        "type": "integer"
+                                    },
+                                    "revenda": {
+                                        "description": "Reseller id",
+                                        "type": "integer"
+                                    },
+                                    "item_estoque_principal": {
+                                        "description": "Primary item id",
+                                        "type": "integer"
+                                    },
+                                    "item_estoque_relacionado": {
+                                        "description": "Related item id",
+                                        "type": "integer"
+                                    },
+                                    "relacao_multipla": {
+                                        "description": "Multiple relationship",
+                                        "type": "string"
+                                    },
+                                    "client": {
+                                        "description": "Client id",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/getrelacaobycliente": {
+            "post": {
+                "summary": "Get relationship by client and primary item",
+                "operationId": "ad2f298c331f2a19f58bc5916fcc07f0",
+                "parameters": [
+                    {
+                        "name": "client",
+                        "in": "query",
+                        "description": "Client id",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    },
+                    {
+                        "name": "item_estoque_principal",
+                        "in": "query",
+                        "description": "Primary item id",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/demonstrativo/conta": {
+            "post": {
+                "tags": [
+                    "Demonstrativo"
+                ],
+                "summary": "Cria uma nova conta no demonstrativo",
+                "description": "Cria uma nova conta no demonstrativo no sistema",
+                "operationId": "136675d98ff653d7289d72a0e6b87f07",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "linha": {
+                                        "description": "Linha",
+                                        "type": "string"
+                                    },
+                                    "nome_conta": {
+                                        "description": "Nome da conta",
+                                        "type": "string"
+                                    },
+                                    "empresa": {
+                                        "description": "Empresa",
+                                        "type": "integer"
+                                    },
+                                    "revenda": {
+                                        "description": "Revenda",
+                                        "type": "integer"
+                                    },
+                                    "client": {
+                                        "description": "Cliente",
+                                        "type": "integer"
+                                    },
+                                    "origem": {
+                                        "description": "Origem",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Conta criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Mensagem de sucesso",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Mensagem de erro",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Linha não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Mensagem de erro",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/demonstrativo/conta/{linha}": {
+            "put": {
+                "tags": [
+                    "Demonstrativo"
+                ],
+                "summary": "Atualiza uma conta no demonstrativo",
+                "description": "Atualiza uma conta no demonstrativo no sistema",
+                "operationId": "a7bef1f643c82d28d4d0d4299a4d5815",
+                "parameters": [
+                    {
+                        "name": "linha",
+                        "in": "path",
+                        "description": "ID da linha",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome_conta": {
+                                        "description": "Nome da conta",
+                                        "type": "string"
+                                    },
+                                    "empresa": {
+                                        "description": "Empresa",
+                                        "type": "integer"
+                                    },
+                                    "revenda": {
+                                        "description": "Revenda",
+                                        "type": "integer"
+                                    },
+                                    "client": {
+                                        "description": "Cliente",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Conta atualizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Mensagem de sucesso",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/demonstrativo/linha": {
+            "post": {
+                "tags": [
+                    "Demonstrativo"
+                ],
+                "summary": "Cria uma nova linha no demonstrativo",
+                "description": "Cria uma nova linha no demonstrativo no sistema",
+                "operationId": "658463db0e0559e564279fbeafb24b8c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome_linha": {
+                                        "description": "Nome da linha",
+                                        "type": "string"
+                                    },
+                                    "tipo_linha": {
+                                        "description": "Tipo da linha",
+                                        "type": "string"
+                                    },
+                                    "empresa": {
+                                        "description": "Empresa",
+                                        "type": "integer"
+                                    },
+                                    "revenda": {
+                                        "description": "Revenda",
+                                        "type": "integer"
+                                    },
+                                    "client": {
+                                        "description": "Cliente",
+                                        "type": "integer"
+                                    },
+                                    "origem": {
+                                        "description": "Origem",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Linha criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Mensagem de sucesso",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Erros de validação",
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/demonstrativo/linhas": {
+            "post": {
+                "tags": [
+                    "Demonstrativo"
+                ],
+                "summary": "Retorna linhas do demonstrativo por cliente e empresa",
+                "description": "Retorna linhas do demonstrativo por cliente e empresa",
+                "operationId": "081b8ad3dcd165b7f7c3f4673f6e4aff",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "client": {
+                                        "description": "ID do cliente",
+                                        "type": "integer"
+                                    },
+                                    "empresa": {
+                                        "description": "ID da empresa",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Linhas encontradas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "linha": {
+                                            "description": "ID da linha",
+                                            "type": "integer"
+                                        },
+                                        "nome_linha": {
+                                            "description": "Nome da linha",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/solicitacao-compra": {
+            "post": {
+                "tags": [
+                    "Solicitação de Compra"
+                ],
+                "summary": "Cria uma nova solicitação de compra",
+                "description": "Cria uma nova solicitação de compra no sistema",
+                "operationId": "8b0a01a59d9b800c153a8339ef2f500d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "descricao_compra": {
+                                        "description": "Descrição da compra",
+                                        "type": "string"
+                                    },
+                                    "fornecedor": {
+                                        "description": "Fornecedor",
+                                        "type": "string"
+                                    },
+                                    "forma_pagamento": {
+                                        "description": "Forma de pagamento",
+                                        "type": "string"
+                                    },
+                                    "modalidade": {
+                                        "description": "Modalidade",
+                                        "type": "string"
+                                    },
+                                    "empresa": {
+                                        "description": "Empresa",
+                                        "type": "string"
+                                    },
+                                    "revenda": {
+                                        "description": "Revenda",
+                                        "type": "string"
+                                    },
+                                    "client": {
+                                        "description": "Cliente",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Solicitação de compra criada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "Mensagem de sucesso",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Mensagem de erro",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Mensagem de erro",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

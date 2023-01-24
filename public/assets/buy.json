@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "1",
+    "date": "10/12/2022",
+    "product": "Mouse",
+    "quant": "1",
+    "valueOne": "R$ 100,00",
+    "valueMany":"R$ 100,00",
+    "modality":"NULL",
+    "formPag": "A prazo",
+    "provider":"Tech+",
+    "authorizer":"Junior",
+    "requester":"Joana"
+  },
+
+  { "_id": "1", "date": "10/12/2022", "product": "Teclado",
+  "quant": "1", "valueOne": "R$ 100,00", "valueMany":"R$ 100,00",
+  "modality":"A prazo","provider":"Tech+","authorizer":"Junior",
+  "requester":"Joana"},
+  { "_id": "1", "date": "10/12/2022", "product": "Monitor",
+  "quant": "1", "valueOne": "R$ 400,00", "valueMany":"R$ 400,00",
+  "modality":"A prazo","provider":"Tech+","authorizer":"Junior",
+  "requester":"Joana"}
+
+
+]
